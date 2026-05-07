@@ -86,7 +86,8 @@ function findItemIdByName(searchName) {
         "theblackcleaver": "3071",
         "steraksgage": "3053",
         "locketoftheironsolari": "3190",
-        "deathsdance": "3139"
+        "deathsdance": "3139",
+        "ludenscompanion": "3285"
     };
 
     return fallbacks[cleanSearch] || null;
