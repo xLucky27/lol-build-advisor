@@ -86,8 +86,7 @@ function findItemIdByName(searchName) {
         "theblackcleaver": "3071",
         "steraksgage": "3053",
         "locketoftheironsolari": "3190",
-        "deathsdance": "3139",
-        "ludenscompanion": "3285"
+        "deathsdance": "3139"
     };
 
     return fallbacks[cleanSearch] || null;
@@ -266,11 +265,23 @@ document.addEventListener('DOMContentLoaded', () => {
             slot.className = 'item-slot';
             
             if (itemId) {
-                const rawDesc = allItems[itemId].description;
-                const cleanDesc = rawDesc.replace(/<[^>]*>?/gm, '');
-                slot.title = `${allItems[itemId].name}\n\n${cleanDesc}`;
-                slot.innerHTML = `<img src="https://ddragon.leagueoflegends.com/cdn/${latestVersion}/img/item/${itemId}.png" class="item-icon"><span>${itemName}</span>`;
+                const itemData = allItems[itemId];
+                if (itemData) {
+                    // Verwijder HTML tags uit de description voor een schone tooltip
+                    const rawDesc = itemData.description || "";
+                    const cleanDesc = rawDesc.replace(/<[^>]*>?/gm, '');
+                    slot.title = `${itemData.name}\n\n${cleanDesc}`;
+                } else {
+                    // Fallback tooltip als data niet in allItems zit (maar we wel een ID hebben)
+                    slot.title = itemName;
+                }
+                
+                slot.innerHTML = `
+                    <img src="https://ddragon.leagueoflegends.com/cdn/${latestVersion}/img/item/${itemId}.png" class="item-icon" alt="${itemName}">
+                    <span>${itemName}</span>
+                `;
             } else {
+                // Fallback als er helemaal geen itemId gevonden is
                 slot.innerHTML = `<span>${itemName}</span>`;
             }
             itemGrid.appendChild(slot);
