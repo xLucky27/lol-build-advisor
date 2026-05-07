@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoL Build Advisor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>LoL Build Advisor</h1>
+        
+        <div class="section">
+            <h2>Jouw Informatie</h2>
+            <label for="user-champion">Kies jouw Champion:</label>
+            <select id="user-champion">
+                <!-- Wordt gevuld via JavaScript -->
+            </select>
+
+            <label for="user-lane">Kies jouw Lane:</label>
+            <select id="user-lane">
+                <option value="Top">Top</option>
+                <option value="Jungle">Jungle</option>
+                <option value="Mid">Mid</option>
+                <option value="Bot">Bot</option>
+                <option value="Support">Support</option>
+            </select>
+        </div>
+
+        <div class="section">
+            <h2>Vijandelijk Team</h2>
+            <div id="enemy-inputs">
+                <select class="enemy-select"><option value="">Kies vijand 1</option></select>
+                <select class="enemy-select"><option value="">Kies vijand 2</option></select>
+                <select class="enemy-select"><option value="">Kies vijand 3</option></select>
+                <select class="enemy-select"><option value="">Kies vijand 4</option></select>
+                <select class="enemy-select"><option value="">Kies vijand 5</option></select>
+            </div>
+        </div>
+
+        <button id="calculate-btn">Bereken Build Advies</button>
+
+        <div id="result" class="result-box" style="display: none;">
+            <div class="result-header">
+                <img id="result-champ-img" class="main-champ-portrait" src="" alt="">
+                <h3>Analyse & Advies</h3>
+            </div>
+            <div id="breakdown-container">
+                <div class="breakdown-text">
+                    <span style="color: #d94232;">AD Schade</span>
+                    <span style="color: #3273d9;">AP Schade</span>
+                </div>
+                <div class="damage-bar">
+                    <div id="ad-bar" class="ad-part" style="width: 50%;"></div>
+                    <div id="ap-bar" class="ap-part" style="width: 50%;"></div>
+                </div>
+            </div>
+            
+            <div class="advice-section">
+                <h4>Aanbevolen Build:</h4>
+                <div id="item-build" class="item-grid">
+                    <!-- Items worden hier geplaatst -->
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 20px;">
+                <div class="advice-section" style="flex: 1;">
+                    <h4>Summoner Spells:</h4>
+                    <div id="summoner-spells" style="display: flex; gap: 10px;">
+                        <!-- Spells worden hier geplaatst -->
+                    </div>
+                </div>
+                <div class="advice-section" style="flex: 1;">
+                    <h4>Runes:</h4>
+                    <div id="rune-setup" class="rune-container">
+                        <!-- Runes worden hier geplaatst -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="advice-text"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
